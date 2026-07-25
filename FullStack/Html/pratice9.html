@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saha College | Knowledge, Excellence, Success</title>
+  <style>
+    :root { --navy:#102a43; --blue:#176b87; --teal:#1fa4a9; --cream:#f6f9fc; --ink:#243b53; --gold:#f4b942; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:Arial, Helvetica, sans-serif; line-height:1.6; background:var(--cream); }
+    header { color:var(--white); background:linear-gradient(135deg, var(--navy), var(--blue)); box-shadow:0 3px 14px #102a4355; }
+    .brand { display:flex; align-items:center; justify-content:center; gap:14px; padding:25px 20px 18px; }
+    .logo { display:grid; place-items:center; width:64px; height:64px; border:2px solid #ffffffa8; border-radius:50%; background:#ffffff1c; font-weight:700; font-size:1.3rem; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { margin-bottom:0; font-size:clamp(1.75rem,4vw,2.5rem); }
+    .tagline { margin:2px 0 0; color:#d9f5f5; letter-spacing:.08em; font-size:.86rem; }
+    nav { display:flex; justify-content:center; flex-wrap:wrap; gap:4px 18px; padding:12px 20px; border-top:1px solid #ffffff36; }
+    nav a { color:var(--white); padding:4px 0; text-decoration:none; font-weight:600; font-size:.92rem; }
+    nav a:hover,nav a.active { color:#ffdc7a; }
+    main { max-width:1120px; margin:auto; padding:32px 20px 54px; }
+    section { margin:24px 0; padding:28px; border-radius:14px; background:var(--white); box-shadow:0 4px 20px #102a4312; scroll-margin-top:20px; }
+    h2 { color:var(--navy); font-size:1.65rem; margin-bottom:18px; }
+    h2::after { content:""; display:block; width:52px; height:4px; margin-top:7px; border-radius:4px; background:var(--teal); }
+    .hero { min-height:330px; display:grid; align-content:center; padding:clamp(30px,7vw,76px); color:white; background:linear-gradient(115deg,#102a43eb,#176b87d9), radial-gradient(circle at 85% 15%,#1fa4a9 0 7%,transparent 7.5%); }
+    .hero h2 { max-width:650px; color:white; font-size:clamp(2rem,5vw,3.4rem); line-height:1.12; }
+    .hero h2::after { background:var(--gold); }
+    .hero p { max-width:640px; color:#eefbff; font-size:1.08rem; }
+    .button { display:inline-block; width:max-content; margin-top:8px; padding:11px 20px; border:0; border-radius:7px; color:var(--navy); background:var(--gold); font-weight:bold; text-decoration:none; cursor:pointer; }
+    .button:hover { background:#ffd167; transform:translateY(-1px); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; }
+    .card { padding:18px; border-radius:10px; background:#f1f7fa; border-left:4px solid var(--teal); }
+    .card h3 { color:var(--navy); margin-bottom:6px; }
+    ul { padding-left:20px; } li { margin-bottom:7px; }
+    table { width:100%; border-collapse:collapse; overflow:hidden; border-radius:8px; }
+    th { color:white; background:var(--navy); text-align:left; } th,td { padding:13px 14px; border-bottom:1px solid #dce8ef; } tr:nth-child(even) { background:#f5fafc; } tr:hover { background:#e9f6f7; }
+    .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; } .full { grid-column:1 / -1; }
+    label { display:block; margin-bottom:6px; font-weight:600; color:var(--navy); }
+    .radio-group { display:flex; gap:17px; align-items:center; } .radio-group label { margin:0; font-weight:normal; }
+    input,textarea,select { width:100%; padding:11px 12px; border:1px solid #b8cbd5; border-radius:6px; color:var(--ink); font:inherit; background:white; }
+    input:focus,textarea:focus,select:focus { outline:3px solid #1fa4a955; border-color:var(--teal); }
+    input[type=radio] { width:auto; } input[type=file] { padding:8px; }
+    .form-actions { display:flex; gap:12px; margin-top:20px; } .secondary { color:var(--navy); background:#dce8ef; }
+    .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .gallery figure { min-height:160px; margin:0; display:grid; place-items:center; border-radius:9px; overflow:hidden; color:white; font-weight:bold; text-align:center; background:linear-gradient(145deg,#176b87,#1fa4a9); }
+    .gallery img { width:100%; height:100%; object-fit:cover; } .gallery img:not([src]) { display:none; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.35fr; gap:26px; } iframe { width:100%; min-height:300px; border:0; border-radius:9px; }
+    footer { padding:28px 20px; color:#d9f5f5; text-align:center; background:var(--navy); } footer p { margin-bottom:8px; } footer a { color:white; text-decoration:none; margin:0 7px; } footer a:hover { color:var(--gold); }
+    #toast { position:fixed; z-index:10; right:20px; bottom:20px; max-width:330px; padding:14px 18px; border-radius:8px; color:white; background:#0d5b61; box-shadow:0 5px 20px #102a4366; opacity:0; transform:translateY(15px); transition:.25s; pointer-events:none; } #toast.show { opacity:1; transform:none; }
+    @media (max-width:650px) { section { padding:22px 18px; } .form-grid,.contact-grid { grid-template-columns:1fr; } .gallery { grid-template-columns:repeat(2,1fr); } .gallery figure { min-height:120px; } th,td { padding:10px; font-size:.9rem; } .table-wrap { overflow-x:auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="logo" aria-hidden="true">SC</div><div><h1>Saha College</h1><p class="tagline">KNOWLEDGE &bull; EXCELLENCE &bull; SUCCESS</p></div></div>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#departments">Departments</a><a href="#faculty">Faculty</a><a href="#facilities">Facilities</a><a href="#gallery">Gallery</a><a href="#admissions">Admissions</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero"><h2>Empowering tomorrow's leaders.</h2><p>Saha College is a leading institution dedicated to academic excellence and holistic student development. Learn with experienced faculty, modern facilities, and career-focused opportunities.</p><a class="button" href="#admissions">Apply for Admission</a></section>
+    <section id="about"><h2>About the College</h2><div class="grid"><article class="card"><h3>History</h3><p>Established in 2005, Saha College has grown into a reputed institution for higher education.</p></article><article class="card"><h3>Vision</h3><p>To be a center of excellence in education, innovation, and research.</p></article><article class="card"><h3>Mission</h3><ul><li>Provide quality education</li><li>Promote research and innovation</li><li>Develop leadership skills</li><li>Create responsible citizens</li></ul></article></div></section>
+    <section id="courses"><h2>Courses Offered</h2><div class="grid" id="courseCards"></div></section>
+    <section id="departments"><h2>Departments</h2><div class="table-wrap"><table><thead><tr><th>Department</th><th>HOD</th><th>Faculty</th></tr></thead><tbody><tr><td>Computer Science</td><td>Dr. Sumit Kumar Vishwakarma</td><td>15</td></tr><tr><td>Management</td><td>Dr. Papiya Saha</td><td>12</td></tr><tr><td>Commerce</td><td>Prof. Amit Vishwakarma</td><td>10</td></tr><tr><td>Science</td><td>Dr. Neha Gupta</td><td>14</td></tr></tbody></table></div></section>
+    <section id="faculty"><h2>Faculty Members</h2><div class="table-wrap"><table><thead><tr><th>Teacher Name</th><th>Subject</th><th>Experience</th></tr></thead><tbody><tr><td>Dr. Sumit Kumar Vishwakarma</td><td>Programming</td><td>15 Years</td></tr><tr><td>Dr. Papiya Saha</td><td>Management</td><td>12 Years</td></tr><tr><td>Prof. Amit Vishwakarma</td><td>Accounting</td><td>10 Years</td></tr><tr><td>Dr. Neha Gupta</td><td>Physics</td><td>11 Years</td></tr></tbody></table></div></section>
+    <section id="facilities"><h2>Facilities</h2><div class="grid" id="facilityCards"></div></section>
+    <section id="admissions"><h2>Admission Form</h2><form id="admissionForm"><div class="form-grid"><div><label for="name">Name</label><input id="name" required></div><div><label for="father-name">Father's Name</label><input id="father-name" required></div><div><label for="mother-name">Mother's Name</label><input id="mother-name" required></div><div><label for="dob">Date of Birth</label><input type="date" id="dob" required></div><div><label>Gender</label><div class="radio-group"><input type="radio" id="male" name="gender" required><label for="male">Male</label><input type="radio" id="female" name="gender"><label for="female">Female</label><input type="radio" id="other" name="gender"><label for="other">Other</label></div></div><div><label for="email">Email</label><input type="email" id="email" required></div><div><label for="phone">Phone</label><input type="tel" id="phone" pattern="[0-9+ -]{10,15}" placeholder="e.g. +91 98765 43210" required></div><div><label for="course">Course</label><select id="course" required><option value="">Select a course</option></select></div><div><label for="tenth">10th Percentage</label><input type="number" id="tenth" min="0" max="100" step="0.01" required></div><div><label for="twelfth">12th Percentage</label><input type="number" id="twelfth" min="0" max="100" step="0.01" required></div><div><label for="photo">Upload Photo</label><input type="file" id="photo" accept="image/*" required></div><div class="full"><label for="address">Address</label><textarea id="address" rows="4" required></textarea></div></div><div class="form-actions"><button class="button" type="submit">Apply Now</button><button class="button secondary" type="reset">Reset</button></div></form></section>
+    <section id="fees"><h2>Fee Structure</h2><div class="table-wrap"><table><thead><tr><th>Course</th><th>Annual Fee</th></tr></thead><tbody><tr><td>BCA</td><td>&#8377;80,000</td></tr><tr><td>BBA</td><td>&#8377;75,000</td></tr><tr><td>B.Com</td><td>&#8377;50,000</td></tr><tr><td>MCA</td><td>&#8377;1,00,000</td></tr></tbody></table></div></section>
+    <section id="gallery"><h2>Campus Gallery</h2><div class="gallery"><figure><img src="campus1.jpg" alt="Saha College campus"><span>College Campus</span></figure><figure><img src="campus2.jpg" alt="Saha College library"><span>Library</span></figure><figure><img src="campus3.jpg" alt="Saha College computer lab"><span>Computer Lab</span></figure><figure><img src="campus4.jpg" alt="Saha College classroom"><span>Smart Classroom</span></figure></div></section>
+    <section id="achievements"><h2>Achievements &amp; Placements</h2><div class="grid"><article class="card"><h3>Best College Award</h3><p>Recognised in 2025 for academic excellence.</p></article><article class="card"><h3>95% Placement Record</h3><p>Strong career outcomes for graduating students.</p></article><article class="card"><h3>Beyond the Classroom</h3><p>University rank holders and national-level sports champions every year.</p></article></div></section>
+    <section id="contact"><h2>Contact Us</h2><div class="contact-grid"><div><p><strong>Address:</strong><br>Knowledge Park, Greater Noida</p><p><strong>Phone:</strong><br><a href="tel:+917607933911">+91 7607933911</a></p><p><strong>Email:</strong><br><a href="mailto:info@sahacollege.com">info@sahacollege.com</a></p></div><iframe src="https://www.google.com/maps?q=Knowledge%20Park%2C%20Greater%20Noida&output=embed" title="Saha College Location" loading="lazy"></iframe></div></section>
+  </main>
+  <footer><p>&copy; 2026 Saha College. All Rights Reserved.</p><p>Knowledge &bull; Excellence &bull; Success</p><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a></footer><div id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const courses = ['B.Tech','BCA','BBA','B.Com','BA','B.Sc','MBA','MCA'];
+    const facilities = ['Library','Computer Lab','Smart Classrooms','Hostel','Wi-Fi Campus','Sports Ground','Cafeteria','Medical Room'];
+    document.getElementById('courseCards').innerHTML = courses.map(course => `<article class="card"><h3>${course}</h3><p>Learn with a practical, student-centred curriculum.</p></article>`).join('');
+    document.getElementById('facilityCards').innerHTML = facilities.map(facility => `<article class="card"><h3>${facility}</h3><p>Designed to support a complete campus experience.</p></article>`).join('');
+    document.getElementById('course').insertAdjacentHTML('beforeend', courses.map(course => `<option>${course}</option>`).join(''));
+    document.querySelectorAll('.gallery img').forEach(image => image.addEventListener('error', () => image.remove()));
+    const toast = document.getElementById('toast'); let toastTimer;
+    function showToast(message) { toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 4500); }
+    document.getElementById('admissionForm').addEventListener('submit', event => { event.preventDefault(); showToast(`Thank you, ${document.getElementById('name').value}! Your application has been received.`); event.currentTarget.reset(); });
+    const navLinks = [...document.querySelectorAll('nav a')];
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id)); }), { rootMargin:'-35% 0px -55% 0px' });
+    document.querySelectorAll('main section').forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
